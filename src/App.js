@@ -5,6 +5,7 @@ import initialEmails from './data/emails'
 import './App.css'
 import Header from './components/Header'
 import LeftNav from './components/LeftNav'
+import Emails from './components/Emails'
 
 const getReadEmails = emails => emails.filter(email => !email.read)
 
@@ -90,7 +91,12 @@ function App() {
         </ul>
       </nav>
       <main className="emails">
-        <ul>
+        <Emails
+          searchedEmails={searchedEmails}
+          toggleRead={toggleRead}
+          toggleStar={toggleStar}
+        />
+        {/* <ul>
           {searchedEmails().map((email, index) => (
             <li
               key={index}
@@ -116,7 +122,7 @@ function App() {
               <div className="title">{email.title}</div>
             </li>
           ))}
-        </ul>
+        </ul> */}
       </main>
     </div>
   )
