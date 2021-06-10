@@ -12,6 +12,7 @@ function App() {
   const [emails, setEmails] = useState(initialEmails)
   const [hideRead, setHideRead] = useState(false)
   const [currentTab, setCurrentTab] = useState('inbox')
+  const [searchInput, setSearchInput] = useState('')
 
   const unreadEmails = emails.filter(email => !email.read)
   const starredEmails = emails.filter(email => email.starred)
@@ -41,6 +42,20 @@ function App() {
   if (currentTab === 'starred')
     filteredEmails = getStarredEmails(filteredEmails)
 
+  const handlechange = e => {
+    setSearchInput(e.target.value)
+    console.log(searchInput)
+  }
+
+  const searchedEmails = () => {
+    // filter through the emails to get the eamil we searched for
+    return searchInput
+      ? filteredEmails.filter(
+          email => searchInput.toLowerCase() === email.sender.toLowerCase()
+        )
+      : filteredEmails
+  }
+
   return (
     <div className="app">
       <header className="header">
@@ -56,7 +71,12 @@ function App() {
         </div>
 
         <div className="search">
-          <input className="search-bar" placeholder="Search mail" />
+          <input
+            className="search-bar"
+            placeholder="Search mail by title"
+            onChange={handlechange}
+            value={searchInput}
+          />
         </div>
       </header>
       <nav className="left-menu">
@@ -89,7 +109,7 @@ function App() {
       </nav>
       <main className="emails">
         <ul>
-          {filteredEmails.map((email, index) => (
+          {searchedEmails().map((email, index) => (
             <li
               key={index}
               className={`email ${email.read ? 'read' : 'unread'}`}
