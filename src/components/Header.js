@@ -15,7 +15,7 @@ const Header = props => {
       </div>
 
       <Search
-        handlechange={props.handlechange}
+        handleChange={props.handleChange}
         searchInput={props.searchInput}
       />
     </header>

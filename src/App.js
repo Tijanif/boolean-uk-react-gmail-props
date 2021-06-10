@@ -4,6 +4,7 @@ import initialEmails from './data/emails'
 
 import './App.css'
 import Header from './components/Header'
+import LeftNav from './components/LeftNav'
 
 const getReadEmails = emails => emails.filter(email => !email.read)
 
@@ -43,9 +44,8 @@ function App() {
   if (currentTab === 'starred')
     filteredEmails = getStarredEmails(filteredEmails)
 
-  const handlechange = e => {
+  const handleChange = e => {
     setSearchInput(e.target.value)
-    console.log(searchInput)
   }
 
   const searchedEmails = () => {
@@ -59,7 +59,8 @@ function App() {
 
   return (
     <div className="app">
-      <Header handlechange={handlechange} searchInput={searchInput} />
+      <Header handleChange={handleChange} searchInput={searchInput} />
+      {/* <LeftNav setCurrentTab={setCurrentTab} setHideRead={setHideRead} /> */}
       <nav className="left-menu">
         <ul className="inbox-list">
           <li
