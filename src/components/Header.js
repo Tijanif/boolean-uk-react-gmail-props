@@ -1,3 +1,5 @@
+import Search from './Search'
+
 const Header = props => {
   return (
     <header className="header">
@@ -12,14 +14,10 @@ const Header = props => {
         />
       </div>
 
-      <div className="search">
-        <input
-          className="search-bar"
-          placeholder="Search mail by title"
-          onChange={props.handlechange}
-          value={props.searchInput}
-        />
-      </div>
+      <Search
+        handlechange={props.handlechange}
+        searchInput={props.searchInput}
+      />
     </header>
   )
 }
