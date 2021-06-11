@@ -5,10 +5,10 @@ const Emails = props => {
     <ul>
       {props.searchedEmails().map((email, index) => (
         <Email
+          key={index}
           toggleRead={props.toggleRead}
           toggleStar={props.toggleStar}
           email={email}
-          index={index}
         />
       ))}
     </ul>
