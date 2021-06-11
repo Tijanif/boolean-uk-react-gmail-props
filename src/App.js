@@ -49,11 +49,22 @@ function App() {
     setSearchInput(e.target.value)
   }
 
+  // option one
+  // const searchedEmails = () => {
+  //   // filter through the emails to get the eamil we searched for
+  //   return searchInput
+  //     ? filteredEmails.filter(
+  //         email => searchInput.toLowerCase() === email.sender.toLowerCase()
+  //       )
+  //     : filteredEmails
+  // }
+
+  // option two
   const searchedEmails = () => {
     // filter through the emails to get the eamil we searched for
     return searchInput
       ? filteredEmails.filter(
-          email => searchInput.toLowerCase() === email.sender.toLowerCase()
+          email => email.sender.toLowerCase().indexOf(searchInput) !== -1
         )
       : filteredEmails
   }
