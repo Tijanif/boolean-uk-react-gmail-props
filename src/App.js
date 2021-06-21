@@ -72,8 +72,15 @@ function App() {
   return (
     <div className="app">
       <Header handleChange={handleChange} searchInput={searchInput} />
-      {/* <LeftNav setCurrentTab={setCurrentTab} setHideRead={setHideRead} /> */}
-      <nav className="left-menu">
+      <LeftNav
+        setCurrentTab={setCurrentTab}
+        setHideRead={setHideRead}
+        currentTab={currentTab}
+        starredEmails={starredEmails}
+        unreadEmails={unreadEmails}
+        hideRead={hideRead}
+      />
+      {/* <nav className="left-menu">
         <ul className="inbox-list">
           <li
             className={`item ${currentTab === 'inbox' ? 'active' : ''}`}
@@ -100,14 +107,14 @@ function App() {
             />
           </li>
         </ul>
-      </nav>
-      <main className="emails">
-        <Emails
-          searchedEmails={searchedEmails}
-          toggleRead={toggleRead}
-          toggleStar={toggleStar}
-        />
-        {/* <ul>
+      </nav> */}
+
+      <Emails
+        searchedEmails={searchedEmails}
+        toggleRead={toggleRead}
+        toggleStar={toggleStar}
+      />
+      {/* <ul>
           {searchedEmails().map((email, index) => (
             <li
               key={index}
@@ -134,7 +141,6 @@ function App() {
             </li>
           ))}
         </ul> */}
-      </main>
     </div>
   )
 }

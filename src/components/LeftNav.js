@@ -1,5 +1,11 @@
-const LeftNav = props => {
-  const [currentTab, setCurrentTab] = useState('inbox')
+const LeftNav = ({
+  setHideRead,
+  setCurrentTab,
+  currentTab,
+  starredEmails,
+  unreadEmails,
+  hideRead
+}) => {
   return (
     <nav className="left-menu">
       <ul className="inbox-list">
@@ -24,7 +30,7 @@ const LeftNav = props => {
             id="hide-read"
             type="checkbox"
             checked={hideRead}
-            onChange={e => props.setHideRead(e.target.checked)}
+            onChange={e => setHideRead(e.target.checked)}
           />
         </li>
       </ul>
